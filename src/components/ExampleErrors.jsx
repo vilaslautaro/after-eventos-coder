@@ -1,7 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { colors } from '../constants/colors';
 
-const ExampleErrors = ({numbers}) => {
-  const [data, setData] = useState({});
+const ExampleErrors = ({ numbers }) => {
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const numberData = () => {
@@ -12,19 +13,21 @@ const ExampleErrors = ({numbers}) => {
   }, []);
 
   return (
-    <div class="container">
-      <p>Example</p>
-      <h1>Errors</h1>
-      {data.lenght < 0 && data.map((number) => {
-        <p>number</p>
-      })}
-    </div>
-    <div>Solucionando errores</div>
-    <h2>Colores</h2>
-    <p>Primario: {colors.primary}</p>
-    <p>Secundario: {colors.secondary}</p>
+    <>
+      <div className="container">
+        <p>Example</p>
+        <h1>Errors</h1>
+        {data.length > 0 &&
+          data.map(number => {
+            return <p>{number}</p>;
+          })}
+      </div>
+      <div>Solucionando errores</div>
+      <h2>Colores</h2>
+      <p>Primario: {colors.primary}</p>
+      <p>Secundario: {colors.secondary}</p>
+    </>
   );
 };
 
 export default ExampleErrors;
-

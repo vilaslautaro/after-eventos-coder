@@ -4,12 +4,11 @@ export const ExampleForm = () => {
   const [name, setName] = useState('');
 
   const onSubmit = e => {
-    console.log(e);
+    e.preventDefault();
     console.log('formulario enviado');
   };
 
-
-  /*   useEffect(() => {
+  useEffect(() => {
     const mensaje = () => {
       console.log('Hola mundo');
     };
@@ -19,9 +18,9 @@ export const ExampleForm = () => {
     return () => {
       window.removeEventListener('mousemove', mensaje);
     };
-  }, []); */
+  }, []);
 
-/*   useEffect(() => {
+  /*   useEffect(() => {
     //creamos la funcion
     const interval = setInterval(() => {
       console.log('El nombre es: ' + name);
@@ -34,8 +33,6 @@ export const ExampleForm = () => {
     };
   }, [name]); */
 
-  
-
   return (
     <>
       <form onSubmit={onSubmit}>
@@ -46,18 +43,3 @@ export const ExampleForm = () => {
     </>
   );
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

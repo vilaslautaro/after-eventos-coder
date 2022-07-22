@@ -1,19 +1,23 @@
 import { Button, Center } from '@chakra-ui/react';
 
 export const ExampleButtons = () => {
-  const parentElementEvent = () => {
+  const parentElementEvent = event => {
+    event.stopPropagation();
     alert('parentElementEvent executed');
   };
 
-  const firstEvent = () => {
+  const firstEvent = e => {
+    e.stopPropagation();
     alert('firstEvent executed');
   };
 
-  const secondEvent = () => {
+  const secondEvent = e => {
+    e.stopPropagation();
     alert('secondEvent executed');
   };
 
-  const thirdEvent = () => {
+  const thirdEvent = e => {
+    e.stopPropagation();
     alert('thirdEvent executed');
   };
 
@@ -27,10 +31,10 @@ export const ExampleButtons = () => {
       <Button onClick={firstEvent} bg="blue">
         First Event
       </Button>
-      <Button onClick={secondEvent} bg="green">
+      <Button onClick={e => secondEvent(e)} bg="green">
         Second Event
       </Button>
-      <Button onClick={thirdEvent} bg="black">
+      <Button onClick={e => thirdEvent(e)} bg="black">
         Third Event
       </Button>
     </Center>
