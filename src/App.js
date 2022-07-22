@@ -1,41 +1,27 @@
-import React from 'react';
-import {
-  ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  theme,
-} from '@chakra-ui/react';
-import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { Logo } from './Logo';
+import { useState } from 'react';
+import { ExampleButtons } from './components/ExampleButtons';
+import ExampleTab from './components/ExampleTab';
+/* import { ExampleForm } from './components/ExampleForm';
+import ExampleErrors from './components/ExampleErrors'; */
+import { Box, Button, Center, Grid } from '@chakra-ui/react';
 
 function App() {
+  const [showTable, setShowTable] = useState(false);
+/*   const arrayNumbers = [1, 2, 3, 4, 5]; */
+
   return (
-    <ChakraProvider theme={theme}>
-      <Box textAlign="center" fontSize="xl">
-        <Grid minH="100vh" p={3}>
-          <ColorModeSwitcher justifySelf="flex-end" />
-          <VStack spacing={8}>
-            <Logo h="40vmin" pointerEvents="none" />
-            <Text>
-              Edit <Code fontSize="xl">src/App.js</Code> and save to reload.
-            </Text>
-            <Link
-              color="teal.500"
-              href="https://chakra-ui.com"
-              fontSize="2xl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn Chakra
-            </Link>
-          </VStack>
+    <Box flexDirection="column" w="100%">
+      <Center mt={50} flexDirection="column">
+        <Button onClick={() => setShowTable(!showTable)}>Change Example</Button>
+      </Center>
+      <Box textAlign="center" fontSize="xl" bg="#000">
+        <Grid minH="50vh" p={3} mt={'30vh'}>
+          {showTable ? <ExampleTab /> : <ExampleButtons />}
+          {/* <ExampleForm  /> */}
+          {/*   <ExampleErrors numbers={arrayNumbers} /> */}
         </Grid>
       </Box>
-    </ChakraProvider>
+    </Box>
   );
 }
 
